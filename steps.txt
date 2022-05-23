@@ -1,0 +1,28 @@
+Projeto Node: 
+
+steps: 
+
+Instalação das dependencias: 
+- npm install --save express;
+- npm install --save express-handlebars;
+- npm install body-parser --save
+- npm install --save mongoose
+- npm install --save express-session
+- npm install --save connect-flash
+
+esqueleto da aplicação:
+app.js - na raiz
+pastas: 
+	- models
+	- rotas
+	- views>layouts
+			# main.handlebars
+		  > partials
+			#_navbar // você vai colocar as parters do seu site dentro dessa pasta
+e atravez do bodyparser chamar ela no main. 
+	- public // é onde você vai colocar as pastas do bootstrap, lembrando
+que para baixar ele é só extrair os arquivos da pasta e colar dentro dessa public. Também 
+colocar as três linhas de código dentro do mais onde estara fazendo a ligação dos arquivos. 
+		 > admin = será colocado por módulos as paginas do site, onde será possivel ter partes de cada pagina no caso aqui da area do admin da pag.
+
+tem a criação do middleware. 
