@@ -1,0 +1,29 @@
+<div class="jumbotron">
+    <h1 class="display-4">Welcome, this blog node</h1>
+    <p class="lead">First blog creat with NodeJs, new experince. </p>
+    <hr class="my-4">
+    <p>Look the posts</p>
+    <p class="lead">
+        <a href="#" class="btn btn-dark btn-lg" role="button">creat new account</a>
+    </p>    
+</div>
+<hr>
+<h2>List of the Post: </h2>
+
+{{#each postagens}}
+    <div class="card">
+        <div class="card-body">
+
+            <h3>{{titulo}}</h3>           
+            <p>{{descricao}}</p>
+            <a href="/postagem/{{slug}}">
+                <button class="btn btn-success">read more</button>
+            </a>
+            <hr>
+            <small>Categoria :{{categoria.nome}}</small><br>
+            <small>publicado em: {{data}}</small>            
+        </div>
+    </div>
+{{else}}
+    No have posts!
+{{/each}}
