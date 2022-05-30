@@ -1,6 +1,25 @@
-<h1>{{postagem.titulo}}</h1>
-<hr>
-<h3>Descricao : {{postagem.descricao}}</h3>
-<hr>
-<h4>Conteudo : {{postagem.conteudo}}</h4>
-<small>Publicação: {{postagem.data}}</small>
+<style>
+.titulo{
+    background-color: lightgray;
+    text-align: center;
+}
+</style>
+
+
+
+{{#each postagem}}
+    <div class="card">
+        <div class="card-body">
+
+            <h3 class="titulo">{{titulo}}</h3>
+            <hr>      
+            <h4>{{slug}}</h4>     
+            <p>{{descricao}}</p>            
+            <hr>
+            <small>Conteudo : {{conteudo}}</small><br>
+            <small>publicado em: {{data}}</small>            
+        </div>
+    </div>
+{{else}}
+    No have posts!
+{{/each}}

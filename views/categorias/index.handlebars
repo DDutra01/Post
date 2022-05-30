@@ -1,14 +1,40 @@
-<h4>Categorias</h4>
+<h4 class="catPrincipal">Categorias</h4>
+<style>
+    .cat {
+        text-align: center;        
+    }
+
+    .catPrincipal {
+        background-color: lightgray;
+        text-align: center;
+        border-radius: 4px;
+        box-shadow: indigo;
+        padding: auto;
+        box-shadow: 3px 2px 2px rgba(0, 0, 0, 0.233);
+
+    }
+
+    .cardBox {
+        background-color: rgba(206, 215, 224, 0.493);
+        margin-top: 8px;
+        border-radius: 10px;
+        box-shadow: 3px 2px 2px rgba(0, 0, 0, 0.233);
+    }
+</style>
 
 
 {{#each categorias}}
-
-<h1>{{nome}}</h1>
-<hr>
-{{!-- <h2>{{slug}}</h2> --}}
+    <div class="card cardBox">
+        <div class="card-body">
+             <a href="/categorias/{{slug}}">
+            <h5 >{{nome}}</h5>
+            </a>
+            <small>{{slug}}</small>
+        </div>
+    </dir>
 
 
 
 {{else}}
-Nenhuma categoria encontrada!
+    Nenhuma categoria encontrada!
 {{/each}}

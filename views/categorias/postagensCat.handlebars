@@ -1,0 +1,33 @@
+<style>
+.titulo{
+    background-color: lightgray;
+    text-align: center;
+    border-radius:  4px;
+    box-shadow: indigo;
+    padding: auto;
+    box-shadow: 3px 2px 2px rgba(0, 0, 0, 0.233);
+}
+.cardBox{
+    background-color: rgba(206, 215, 224, 0.493);
+    margin-top: 8px;
+    border-radius: 6px;
+   box-shadow: 3px 2px 2px rgba(0, 0, 0, 0.233);
+}
+</style>
+
+{{#each postagens}}
+    <div class="card cardBox">
+        <div class="card-body">
+
+            <h3 class="titulo">Titulo :{{titulo}}</h3>
+            <hr>      
+            <h5> Slug :{{slug}}</h5>     
+            <p> <strong> Descricao: {{descricao}} </strong> </p>                
+            <small>Conteudo : {{conteudo}}</small>
+            <hr>
+            <small>publicado em: {{data}}</small>            
+        </div>
+    </div>
+{{else}}
+    No have posts!
+{{/each}}

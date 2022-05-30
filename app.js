@@ -79,15 +79,37 @@ app.get('/404', (req, res) => {
     res.send('Error 404!')
 })
 
-/* nãop esta listando as categorias!! */
+/* ##### categorias */
 app.get('/categorias',(req,res) => {
-    Categoria.find().then((categorias) => {
+    Categoria.find().lean().then((categorias) => {
         res.render('categorias/index', {categorias :categorias })
     }).catch((err) => {
         req.flash('err_msg','error ao lsitar as categorias')
         res.render('/')
     })
 })
+/* #### post por categoria */
+app.get('/categorias/:slug', (req, res) => {
+    Categoria.findOne({slug: req.params.slug}).then((categoria) => {
+        if (categoria){
+            Postagem.find({categoria: categoria._id}).lean().then((postagens) => {
+                res.render('categorias/postagensCat', {postagens:postagens,categoria: categoria})
+            }).catch((err) =>{
+                req.flash('err_msg','Erro in find post!!')
+                req.redirect('/')
+            })
+        }else{
+            req.flash('err_msg', 'this categoria is not found or no exists')
+            res.render('/categorias')
+        }
+
+    }).catch((err) => {
+        req.flash('err_msg','error in search categoria')
+        res.redirect('/')
+    })
+})
+
+
 
 app.use('/admin', admin)
 
