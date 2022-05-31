@@ -12,6 +12,7 @@ require("./models/Postagem")
 const Postagem = mongoose.model("postagens")
 require('./models/Categoria')
 const Categoria = mongoose.model("categorias")
+const user = require ('./routes/userRouter')
 
 // #Configurações: 
 //session:
@@ -112,6 +113,7 @@ app.get('/categorias/:slug', (req, res) => {
 
 
 app.use('/admin', admin)
+app.use('/user', user)
 
 
 
