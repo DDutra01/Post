@@ -12,6 +12,14 @@
 <body>
     {{>_navbar}}
     <div class="container mt-4">
+        {{#if erroo}}
+        <div class="alert alert-danger">{{this.error}}</div>
+        {{else}}
+        {{/if}}
+
+
+
+
         {{>_msg}}
         {{{body}}}
 

@@ -1,0 +1,37 @@
+sistema de autenticação de usuário: 
+
+
+primeiro passo :
+
+criar arquivo na pasta model (banco de dados nova tabela)
+então você criar as instacias const ... 
+cria o schema .. 
+cria a tabela com o seu nome .. 
+	define cada campo e o tipo dele, se vai ser requerido. 
+
+posterior: 
+criado um arquivo para definir o conjunto de rotar dentro do projeto, 
+como foi feito com o admin do projeto. 
+
+feito o local onde definir as rotas, tem que criar uma nova view para 
+ser usada para o cadastro dos dados do usuário. 
+
+tem que criar as duas rotas tanto a get quanto a post, 
+
+
+e para hashar a senha dos usuários ? 
+pasta do projeto no console: 
+
+npm install --save bcryptjs
+
+deposi importe ele dentro do seu projeto. 
+
+const bcryptjs = require ('bcryptjs')
+
+
+mongo: 
+
+show tables;
+use <nome do banco>
+show collection;
+db.user.find()

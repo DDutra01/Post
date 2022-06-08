@@ -13,6 +13,10 @@ const Postagem = mongoose.model("postagens")
 require('./models/Categoria')
 const Categoria = mongoose.model("categorias")
 const user = require ('./routes/userRouter')
+//auth
+const passport = require('passport')
+require('./config/auth')(passport)
+
 
 // #Configurações: 
 //session:
@@ -21,11 +25,18 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }))
+
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(flash())
+
+
 app.use(flash())
 //MIDDLEWARE: 
 app.use((req, res, next) => {
     res.locals.success_msg = req.flash("success_msg")
     res.locals.err_msg = req.flash("err_msg")
+    res.locals.error = req.flash('error')
     next()
 })
 

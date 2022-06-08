@@ -5,6 +5,8 @@ const mongoose = require('mongoose')
 require('../models/User')
 const User = mongoose.model('user')
 const bcryptjs = require ('bcryptjs')
+const passport = require('passport')
+const localStrategy = require('passport-local').Strategy
 
 /* creat user */
 router.get('/registro', (req, res) => {
@@ -14,7 +16,7 @@ router.get('/registro', (req, res) => {
 router.post('/registro', (req, res) => {
     /* validação do cadastro */
     var erros = []
-
+   
     if (!req.body.nome || req.body.nome == undefined ||
         req.body.nome == null || req.body.email.length < 5) {
         erros.push({ texto: 'Nome inválido!!' })
@@ -24,7 +26,7 @@ router.post('/registro', (req, res) => {
         erros.push({ texto: 'Email inválido!!' })
     }
     if (!req.body.senha || req.body.senha == undefined || req.body.senha == null) {
-        erros.push({ texto: 'Nome inválido!!' })
+        erros.push({ texto: 'Senha inválida!!' })
     }
     if (req.body.senha.length < 4) {
         erros.push({ texto: 'senha muito pequena' })
@@ -36,10 +38,10 @@ router.post('/registro', (req, res) => {
         res.render('user/registro', { erros: erros })
     } else {
         //vÊ se tem cadastro:
-        User.findOne({ email: req.body.email }).then((user) => {
+        User.findOne({ email: req.body.email }).lean().then((user) => {
             if (user) {
-                req.flash('err_msg', ' email já utilizado, tente outro!')
-                res.render('user/registro')
+                req.flash('err_msg',' email já utilizado, tente outro!')
+                res.redirect('/user/registro')
             } else {
                 //creat user
 
@@ -67,13 +69,29 @@ router.post('/registro', (req, res) => {
             res.redirect('/')
         })
 
-        /* NÃO TA SALVANDO OS USUARIOS */
+      
 
 
 
     }
 })
 
+router.get('/login', (req,res) => {
+    res.render('user/loginUser')
+})
 
+router.post('/login', (req,res,next) =>{
+    passport.authenticate("local", {
+        successRedirect:'/',
+        failureRedirect: '/user/login',
+        failureflash: true
+    })(req, res, next)
+
+})
+/* router.post('/login',
+  passport.authenticate('local', { failureRedirect: '/loginUser', failureMessage: true }),
+  function(req, res) {
+    res.redirect('/' + req.body.email);
+  }); */
 
 module.exports = router
