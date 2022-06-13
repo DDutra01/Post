@@ -26,3 +26,11 @@ colocar as três linhas de código dentro do mais onde estara fazendo a ligaçã
 		 > admin = será colocado por módulos as paginas do site, onde será possivel ter partes de cada pagina no caso aqui da area do admin da pag.
 
 tem a criação do middleware. 
+
+
+passpot:
+
+npm install --save passport
+
+npm install --save passport-local
+npm install passport-openidconnect

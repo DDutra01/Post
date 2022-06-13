@@ -7,21 +7,31 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link"  href="/">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link"  href="/">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/categorias">Categorias</a>
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" href="/postagem">Postagens</a>
+          <a class="nav-link" href="/admin/postagens">Postagens</a>
         </li>
+
+        {{#if user}} {{!-- aparece só quando não tem usuário logado. --}}
         <li class="nav-item">
-          <a class="nav-link disable" href="#">Registre-se</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disable" href="#">Login</a>
-        </li>
+            <a class="nav-link disable" href="/user/logout">Sair</a>
+          </li>
+       
+       {{else}}
+
+          <li class="nav-item">
+            <a class="nav-link disable" href="/user/registro">Registre-se</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disable" href="/user/login">Login</a>
+          </li>
+
+        {{/if}}
       </ul>     
     </div>
   </div>

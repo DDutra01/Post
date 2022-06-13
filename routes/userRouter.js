@@ -88,10 +88,22 @@ router.post('/login', (req,res,next) =>{
     })(req, res, next)
 
 })
-/* router.post('/login',
-  passport.authenticate('local', { failureRedirect: '/loginUser', failureMessage: true }),
-  function(req, res) {
-    res.redirect('/' + req.body.email);
-  }); */
+
+/* router.get('/logout', (req,res, next) => {
+
+    req.logout()
+    req.flash('success_msg','Logout with success!')
+    res.redirect('/')
+
+
+
+}) */
+
+router.get("/logout", (req, res) => {
+    req.logout(req.user, err => {
+      if(err) return next(err);
+      res.redirect("/");
+    });
+  });
 
 module.exports = router
